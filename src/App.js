@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import {Component} from 'react'
 
@@ -31,7 +30,11 @@ class App extends Component{
     }
 
     componentDidUpdate(){
-     // this.handleTimeout();
+      this.handleTimeout();
+    }
+
+    componentWillUnmount(){
+      clearTimeout(this.handleTimeout);
     }
 
     handleTimeout=() =>{
@@ -44,7 +47,7 @@ class App extends Component{
 
   render(){
     const {post, counter} = this.state;
-     return (
+  return (
     <div className="App">
       <h1>{counter}</h1>
         {post.map(post => (
