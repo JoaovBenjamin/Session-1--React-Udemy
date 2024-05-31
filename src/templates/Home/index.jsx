@@ -53,7 +53,7 @@ class Home extends Component{
           <Button  
           text = "Load more posts"
           onClick={this.loadMorePosts}
-          disable={noMorePost}
+          disabled={noMorePost}
           />
       </div>
     </section>
