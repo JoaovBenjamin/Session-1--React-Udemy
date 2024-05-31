@@ -1,11 +1,11 @@
-import { Component } from "react";
+import "./styles.css"
 
-export class Button extends Component(){
-    render(){
-        return(
-            <>
-                <button></button>
-            </>
-        )
-    }
+export function Button({text, onClick,disabled}){
+    return(
+        <button 
+        disabled = {disabled}
+        className="button" 
+        onClick={onClick}>
+        {text}</button>
+    )
 }

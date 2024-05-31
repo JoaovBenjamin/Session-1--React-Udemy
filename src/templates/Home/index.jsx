@@ -8,7 +8,7 @@ class Home extends Component{
       post:[],
       allPost: [],
       page: 0,
-      postsPerPage:2
+      postsPerPage:10
     };
 
 
@@ -28,15 +28,34 @@ class Home extends Component{
     }
 
     loadMorePosts = () =>{
-      console.log("Carregando posts")
+      const{
+        page,
+        postsPerPage,
+        allPost,
+        post
+      } = this.state;
+
+      const nextPage = page + postsPerPage
+      const nextPosts = allPost.slice(nextPage, nextPage + postsPerPage)
+      post.push(...nextPosts)
+
+      this.setState({post, page : nextPage})
+    
     }
 
   render(){
-    const {post} = this.state;
+    const {post,page,postsPerPage,allPost} = this.state;
+    const noMorePost = page + postsPerPage >= allPost.length;
   return (
     <section className='container'>
       <Posts post={post}></Posts>
-      <Button>ola</Button>
+      <div className='button-container'>
+          <Button  
+          text = "Load more posts"
+          onClick={this.loadMorePosts}
+          disable={noMorePost}
+          />
+      </div>
     </section>
   );
   }
